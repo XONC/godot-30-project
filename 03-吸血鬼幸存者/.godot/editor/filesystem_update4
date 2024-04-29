@@ -1,0 +1,14 @@
+res://scences/mob.tscn
+res://scripts/mob.gd
+res://smoke_explosion/smoke_explosion.tscn
+res://characters/happy_boo/happy_boo.tscn
+res://scences/player.tscn
+res://scences/main.tscn
+res://scences/tree.tscn
+res://scripts/Gun.gd
+res://scences/gun.tscn
+res://scripts/Buttet.gd
+res://scences/buttet.tscn
+res://characters/slime/slime.tscn
+res://scripts/player.gd
+res://scripts/main.gd
