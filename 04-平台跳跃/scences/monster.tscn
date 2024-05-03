@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://55bl62aucwpc"]
+
+[ext_resource type="Script" path="res://scripts/monster.gd" id="1_3emu2"]
+[ext_resource type="Texture2D" uid="uid://2b6e426mlkpp" path="res://resource/sprites/slime_green.png" id="1_6df4y"]
+[ext_resource type="PackedScene" uid="uid://cm3pgay5w8sf3" path="res://scences/death_zoom.tscn" id="3_1vmst"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yskdc"]
+atlas = ExtResource("1_6df4y")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcr6b"]
+atlas = ExtResource("1_6df4y")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fii7r"]
+atlas = ExtResource("1_6df4y")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkhvw"]
+atlas = ExtResource("1_6df4y")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dh3ri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yskdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcr6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fii7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkhvw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8wy8"]
+size = Vector2(10, 8.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11eoi"]
+size = Vector2(7.71393, 18.9365)
+
+[node name="Monster" type="CharacterBody2D"]
+script = ExtResource("1_3emu2")
+SPEED = 50.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_dh3ri")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.25)
+shape = SubResource("RectangleShape2D_y8wy8")
+
+[node name="RightCast" type="RayCast2D" parent="."]
+position = Vector2(1, 0)
+target_position = Vector2(9, 0)
+
+[node name="DeathZoom" parent="." instance=ExtResource("3_1vmst")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZoom"]
+position = Vector2(2.38419e-07, -0.0918835)
+scale = Vector2(1.8149, 0.518377)
+shape = SubResource("RectangleShape2D_11eoi")
+debug_color = Color(0.760504, 0.328431, 0.786825, 0.42)

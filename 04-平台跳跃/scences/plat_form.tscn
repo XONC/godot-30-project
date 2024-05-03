@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6nnq322ntoc6"]
+
+[ext_resource type="Texture2D" uid="uid://djuncfnlpu2ig" path="res://resource/sprites/platforms.png" id="1_isdwa"]
+[ext_resource type="Script" path="res://scripts/plat_form.gd" id="1_jcy6v"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bg0dx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8r2ut"]
+size = Vector2(32, 8)
+
+[node name="PlatForm" type="AnimatableBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_bg0dx")
+script = ExtResource("1_jcy6v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_isdwa")
+region_enabled = true
+region_rect = Rect2(15.5924, 0, 32.4313, 8.45424)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8r2ut")
+one_way_collision = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(17, 0)
